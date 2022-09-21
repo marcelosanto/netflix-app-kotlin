@@ -4,15 +4,15 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Olá Mundo"
-        android:textColor="@color/white"
-        android:background="#F08"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="8dp"
+    <ImageView
+        android:id="@+id/img_movie"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:src="@drawable/movie_4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintDimensionRatio="9:16"
+        android:scaleType="centerCrop" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
