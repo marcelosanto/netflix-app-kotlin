@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NetFlixApp</string>
+    <string name="capa_do_filme">capa do filme</string>
 </resources>
