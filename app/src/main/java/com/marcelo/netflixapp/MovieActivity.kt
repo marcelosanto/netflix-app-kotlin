@@ -28,10 +28,6 @@ class MovieActivity : AppCompatActivity() {
             getString(R.string.cast, "Robert Dwene jr, alicia silvestone e cacatua alada")
 
         val movies = mutableListOf<Movie>()
-        for (i in 0 until 10) {
-            val movie = if (i % 2 == 0) Movie(R.drawable.movie) else Movie(R.drawable.movie_4)
-            movies.add(movie)
-        }
 
         rv.layoutManager = GridLayoutManager(this, 3)
         rv.adapter = MovieAdapter(movies, R.layout.movie_item_similar)
