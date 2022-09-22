@@ -2,6 +2,7 @@ package com.marcelo.netflixapp
 
 import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -46,5 +47,13 @@ class MovieActivity : AppCompatActivity() {
         val coverImg: ImageView = findViewById(R.id.movie_img)
         coverImg.setImageDrawable(layerDrawable)
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+        }
+        
+        return super.onOptionsItemSelected(item)
     }
 }
