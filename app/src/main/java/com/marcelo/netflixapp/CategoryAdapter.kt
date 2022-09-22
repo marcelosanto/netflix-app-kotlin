@@ -29,10 +29,10 @@ class CategoryAdapter(private val categories: List<Category>) :
         fun bind(category: Category) {
             val txtTitle: TextView = itemView.findViewById(R.id.txt_title)
             val rvCategory: RecyclerView = itemView.findViewById(R.id.rv_category)
-            
+
             rvCategory.layoutManager =
                 LinearLayoutManager(itemView.context, RecyclerView.HORIZONTAL, false)
-            rvCategory.adapter = MovieAdapter(category.movies)
+            rvCategory.adapter = MovieAdapter(category.movies, R.layout.movie_item)
 
             txtTitle.text = category.name
         }
