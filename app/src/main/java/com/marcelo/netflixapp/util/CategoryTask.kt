@@ -18,6 +18,7 @@ class CategoryTask(private val callback: Callback) {
     private val handler = Handler(Looper.getMainLooper())
 
     interface Callback {
+        fun onPreExecute()
         fun onResult(categories: List<Category>)
         fun onFailure(message: String)
     }
@@ -26,6 +27,8 @@ class CategoryTask(private val callback: Callback) {
         // estamos utilizando a UI-thread
         val executor = Executors.newSingleThreadExecutor()
 
+        callback.onPreExecute()
+        
         executor.execute {
             var urlConnection: HttpsURLConnection? = null
             var stream: InputStream? = null
