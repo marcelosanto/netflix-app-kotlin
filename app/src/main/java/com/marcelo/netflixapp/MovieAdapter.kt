@@ -34,11 +34,9 @@ class MovieAdapter(
             val imgMovie: ImageView = itemView.findViewById(R.id.img_movie)
 
             DownloadImageTask(object : DownloadImageTask.Callback {
-
                 override fun onResult(bitmap: Bitmap) {
                     imgMovie.setImageBitmap(bitmap)
                 }
-
             }).execute(movie.coverUrl)
 
 
