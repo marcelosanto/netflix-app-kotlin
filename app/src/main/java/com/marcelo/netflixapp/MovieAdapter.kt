@@ -1,5 +1,6 @@
 package com.marcelo.netflixapp
 
+import android.graphics.Bitmap
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,7 @@ import android.widget.ImageView
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 import com.marcelo.netflixapp.model.Movie
+import com.marcelo.netflixapp.util.DownloadImageTask
 
 class MovieAdapter(
     private val movies: List<Movie>,
@@ -28,9 +30,22 @@ class MovieAdapter(
     }
 
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(item: Movie) {
+        fun bind(movie: Movie) {
             val imgMovie: ImageView = itemView.findViewById(R.id.img_movie)
-            //imgMovie.setImageResource(item.coverUrl)
+
+            DownloadImageTask(object : DownloadImageTask.Callback {
+
+                override fun onResult(bitmap: Bitmap) {
+                    imgMovie.setImageBitmap(bitmap)
+                }
+
+            }).execute(movie.coverUrl)
+
+
+//            Picasso
+//                .get()
+//                .load(movie.coverUrl)
+//                .into(imgMovie)
         }
     }
 
