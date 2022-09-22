@@ -8,7 +8,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.marcelo.netflixapp.model.Category
 
-class CategoryAdapter(private val categories: List<Category>) :
+class CategoryAdapter(
+    private val categories: List<Category>,
+    private val onItemClickListener: (Int) -> Unit
+) :
     RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         val view =
@@ -30,11 +33,14 @@ class CategoryAdapter(private val categories: List<Category>) :
             val txtTitle: TextView = itemView.findViewById(R.id.txt_title)
             val rvCategory: RecyclerView = itemView.findViewById(R.id.rv_category)
 
+            txtTitle.text = category.name
+
             rvCategory.layoutManager =
                 LinearLayoutManager(itemView.context, RecyclerView.HORIZONTAL, false)
-            rvCategory.adapter = MovieAdapter(category.movies, R.layout.movie_item)
+            rvCategory.adapter =
+                MovieAdapter(category.movies, R.layout.movie_item, onItemClickListener)
 
-            txtTitle.text = category.name
+
         }
     }
 

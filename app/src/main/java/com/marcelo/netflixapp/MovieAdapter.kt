@@ -12,7 +12,8 @@ import com.marcelo.netflixapp.util.DownloadImageTask
 
 class MovieAdapter(
     private val movies: List<Movie>,
-    @LayoutRes private val layoutId: Int
+    @LayoutRes private val layoutId: Int,
+    private val onItemClickListener: ((Int) -> Unit)? = null
 ) :
     RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
@@ -32,6 +33,10 @@ class MovieAdapter(
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(movie: Movie) {
             val imgMovie: ImageView = itemView.findViewById(R.id.img_movie)
+
+            imgMovie.setOnClickListener {
+                onItemClickListener?.invoke(movie.id)
+            }
 
             DownloadImageTask(object : DownloadImageTask.Callback {
                 override fun onResult(bitmap: Bitmap) {
